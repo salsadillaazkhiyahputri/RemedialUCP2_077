@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">RemedialUCP2_077</string>
+    <string name="app_name">Library App</string>
+    <string name="title_app">Library App</string>
+    <string name="hint_book_title">Judul Buku</string>
+    <string name="btn_add_book">Tambah Buku</string>
+    <string name="empty_book">Belum ada buku</string>
 </resources>
