@@ -17,7 +17,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.remedialucp2_077.R
 import com.example.remedialucp2_077.viewmodel.LibraryViewModel
 
 @Composable
@@ -30,12 +32,15 @@ fun LibraryScreen(vm: LibraryViewModel) {
 
     Column(modifier = Modifier.padding(16.dp)) {
 
-        Text("Library App", style = MaterialTheme.typography.headlineMedium)
+        Text(
+            text = stringResource(R.string.title_app),
+            style = MaterialTheme.typography.headlineMedium
+        )
 
         OutlinedTextField(
             value = title,
             onValueChange = { title = it },
-            label = { Text("Judul Buku") },
+            label = { Text(stringResource(R.string.hint_book_title)) },
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -46,13 +51,17 @@ fun LibraryScreen(vm: LibraryViewModel) {
             },
             modifier = Modifier.padding(top = 8.dp)
         ) {
-            Text("Tambah Buku")
+            Text(stringResource(R.string.btn_add_book))
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        vm.books.forEach {
-            Text("- ${it.title}")
+        if (vm.books.isEmpty()) {
+            Text(stringResource(R.string.empty_book))
+        } else {
+            vm.books.forEach {
+                Text("- ${it.title}")
+            }
         }
     }
 }
